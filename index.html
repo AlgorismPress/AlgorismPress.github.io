@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algorism Press: Academic & Technical Publishing Infrastructure</title>
+  <meta name="description" content="Algorism Press is publishing infrastructure for technical, academic, and research-led books.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-cream: #FFFFFF;
+      --bg-paper: #FFFFFF;
+      --navy-deep: #1F7A5C;
+      --navy-card: #176149;
+      --slate-soft: #294C4A;
+      --border-subtle: #C6D5CB;
+      --border-dark: #1F7A5C;
+      --gold-accent: #5170FF;
+      --gold-light: #8EA2FF;
+      --crimson-academic: #A84A3A;
+      --text-main: #173F3F;
+      --text-muted: #4D6868;
+      --code-bg: #FFFFFF;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--text-main);
+      font-family: 'EB Garamond', 'Hind Siliguri', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Utility / Language Bar */
+    .utility-bar {
+      border-bottom: 1px solid var(--border-subtle);
+      background: #FFFFFF;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      padding: 6px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+    }
+    .utility-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .lang-switcher {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      padding: 2px 6px;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .lang-btn.active {
+      background: var(--navy-deep);
+      color: #FFF;
+      font-weight: 600;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: var(--bg-paper);
+      border-bottom: 2px solid var(--border-subtle);
+      padding: 22px 32px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand-group {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand-mark {
+      width: 50px;
+      height: 50px;
+      background: var(--navy-deep);
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      border: 1.5px solid var(--gold-accent);
+      border-radius: 2px;
+      box-shadow: inset 0 0 0 4px rgba(197, 168, 105, 0.16);
+      position: relative;
+    }
+    .brand-mark::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 1px;
+      background: var(--gold-light);
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .brand-text h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--navy-deep);
+      line-height: 1.2;
+    }
+    .brand-text p {
+      font-size: 13px;
+      color: var(--gold-accent);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.5px;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      list-style: none;
+    }
+    .main-nav a {
+      text-decoration: none;
+      color: var(--navy-deep);
+      font-family: 'Cinzel', serif;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s;
+    }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--gold-accent);
+      outline-offset: 3px;
+    }
+    .main-nav a:hover {
+      color: var(--crimson-academic);
+    }
+    .btn-contact {
+      border: 1.5px solid var(--navy-deep);
+      padding: 6px 16px;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .btn-contact:hover {
+      background: var(--navy-deep);
+      color: #FFF !important;
+    }
+
+    /* Hero Editorial Section */
+    .hero-section {
+      max-width: none;
+      margin: 0;
+      padding: 78px max(24px, calc((100% - 1152px) / 2)) 58px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 60px;
+      align-items: center;
+      background: #FFFFFF;
+      border-bottom: 2px solid var(--border-subtle);
+    }
+    .hero-copy {
+      max-width: 700px;
+    }
+    .hero-pretitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--navy-deep);
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    .hero-tagline {
+      color: var(--gold-accent);
+      font-family: 'Cinzel', serif;
+      font-size: 17px;
+      letter-spacing: 0.8px;
+      margin-bottom: 18px;
+    }
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--navy-deep);
+      margin-bottom: 24px;
+    }
+    .hero-lead {
+      font-size: 20px;
+      color: var(--slate-soft);
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+    .hero-manifesto {
+      border-left: 3px solid var(--gold-accent);
+      padding-left: 20px;
+      font-style: italic;
+      color: var(--text-main);
+      font-size: 17.5px;
+      background: #FFFFFF;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      margin-bottom: 32px;
+    }
+    .hero-section .btn-secondary {
+      color: var(--navy-deep);
+      border-color: var(--border-subtle);
+    }
+    .hero-section .btn-secondary:hover {
+      background: #FFFFFF;
+      border-color: var(--navy-deep);
+    }
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .btn-primary {
+      background: var(--navy-deep);
+      color: #FFF;
+      text-decoration: none;
+      padding: 12px 26px;
+      font-family: 'Cinzel', serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border: 1px solid var(--navy-deep);
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--crimson-academic);
+      border-color: var(--crimson-academic);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--navy-deep);
+      text-decoration: none;
+      padding: 12px 24px;
+      font-family: 'Cinzel', serif;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      border: 1px solid #91B3A4;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover {
+      background: #FFFFFF;
+      border-color: var(--slate-soft);
+    }
+
+    /* Classical Monogram Illustration */
+    .hero-artwork {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .monogram-frame {
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 1;
+      border: 2px solid #91B3A4;
+      background: var(--bg-paper);
+      padding: 24px;
+      box-shadow: 0 12px 36px rgba(15, 23, 42, 0.12);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 2px;
+      position: relative;
+    }
+    .monogram-frame::after {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px solid var(--gold-light);
+      pointer-events: none;
+    }
+    .monogram-inner {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .monogram-logo-big {
+      font-family: 'Cinzel', serif;
+      font-size: 76px;
+      font-weight: 800;
+      color: var(--navy-deep);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .monogram-latin {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      color: var(--gold-accent);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .monogram-desc {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      padding: 0 12px;
+    }
+
+    /* Section Headers */
+    .section-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 70px 24px;
+    }
+    .section-header {
+      margin-bottom: 46px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .section-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--navy-deep);
+      letter-spacing: 1px;
+    }
+    .section-header p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+
+    /* Public-facing service overview */
+    .service-section {
+      background: #F8F8F6;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .vision-section {
+      background: var(--navy-deep);
+      color: #FFFFFF;
+      max-width: none;
+      padding-left: max(24px, calc((100% - 1152px) / 2));
+      padding-right: max(24px, calc((100% - 1152px) / 2));
+    }
+    .vision-section .section-header {
+      border-bottom-color: rgba(255, 255, 255, 0.28);
+    }
+    .vision-section .section-header h2,
+    .vision-section .section-header p {
+      color: #FFFFFF;
+    }
+    .vision-kicker {
+      color: var(--gold-light);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+    .vision-statement {
+      max-width: 820px;
+      font-family: 'Cinzel', serif;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.18;
+      margin-bottom: 22px;
+    }
+    .vision-lead {
+      max-width: 760px;
+      color: #DCEBE8;
+      font-size: 20px;
+      line-height: 1.65;
+      margin-bottom: 44px;
+    }
+    .vision-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid rgba(255, 255, 255, 0.28);
+    }
+    .vision-point {
+      padding: 24px 24px 0 0;
+      margin-right: 24px;
+      border-right: 1px solid rgba(255, 255, 255, 0.28);
+    }
+    .vision-point:last-child {
+      border-right: 0;
+    }
+    .vision-point strong {
+      display: block;
+      color: #FFFFFF;
+      font-family: 'Cinzel', serif;
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+    .vision-point span {
+      color: #C5DCD8;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .architecture-section {
+      background: #F8F8F6;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .architecture-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .book-spread {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 18px;
+      background: #E7EEF2;
+      border: 1px solid #B7CBD5;
+      box-shadow: 10px 10px 0 var(--navy-deep);
+    }
+    .book-page {
+      min-height: 330px;
+      background: #FFFFFF;
+      border: 1px solid #D6E0E4;
+      padding: 22px 18px;
+    }
+    .page-number {
+      color: var(--gold-accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      margin-bottom: 28px;
+    }
+    .page-heading {
+      color: var(--navy-deep);
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      line-height: 1.25;
+      margin-bottom: 18px;
+    }
+    .page-lines {
+      display: grid;
+      gap: 7px;
+      margin-bottom: 20px;
+    }
+    .page-lines span {
+      display: block;
+      height: 5px;
+      background: #D7E1E4;
+    }
+    .page-lines span:nth-child(2) { width: 84%; }
+    .page-lines span:nth-child(3) { width: 68%; }
+    .page-code {
+      height: 58px;
+      background: #E8F1F8;
+      border-left: 3px solid var(--gold-accent);
+      margin-top: 20px;
+    }
+    .page-diagram {
+      height: 86px;
+      border: 1px solid #8FB5C7;
+      background: linear-gradient(135deg, transparent 49%, #8FB5C7 50%, transparent 51%);
+      margin-top: 22px;
+    }
+    .architecture-copy h3 {
+      color: var(--navy-deep);
+      font-family: 'Cinzel', serif;
+      font-size: 32px;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+    .architecture-copy > p {
+      color: var(--slate-soft);
+      font-size: 18px;
+      line-height: 1.65;
+      margin-bottom: 26px;
+    }
+    .architecture-flow {
+      display: grid;
+      gap: 12px;
+    }
+    .architecture-step {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      align-items: center;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 12px;
+    }
+    .architecture-step b {
+      color: #FFFFFF;
+      background: var(--navy-deep);
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+    .architecture-step span {
+      color: var(--text-main);
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--border-subtle);
+      border-left: 1px solid var(--border-subtle);
+    }
+    .service-item {
+      min-height: 220px;
+      padding: 30px 28px;
+      background: transparent;
+      border-right: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .service-item:nth-child(2),
+    .service-item:nth-child(3) { background: transparent; }
+    .service-kicker {
+      color: var(--crimson-academic);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .service-item h3 {
+      color: var(--navy-deep);
+      font-family: 'Cinzel', serif;
+      font-size: 21px;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .service-item p {
+      color: var(--slate-soft);
+      font-size: 16.5px;
+      line-height: 1.6;
+    }
+    .capability-heading {
+      margin: 46px 0 20px;
+      color: var(--navy-deep);
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+    }
+    .capability-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .capability-card {
+      min-height: 150px;
+      background: var(--bg-cream);
+      border: 1px solid var(--border-subtle);
+      border-top: 4px solid var(--gold-accent);
+      padding: 20px 18px;
+    }
+    .capability-card:nth-child(2) { border-top-color: var(--navy-deep); }
+    .capability-card:nth-child(3) { border-top-color: var(--crimson-academic); }
+    .capability-card:nth-child(4) { border-top-color: var(--border-dark); }
+    .capability-card h4 {
+      color: var(--navy-deep);
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .capability-card p {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    /* Three Pillars Grid */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    #catalog { background: #F8F8F6 !important; }
+    .pillar-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--border-subtle);
+      padding: 34px 28px;
+      border-radius: 2px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pillar-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      border-color: var(--gold-accent);
+    }
+    .pillar-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--crimson-academic);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .pillar-title {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy-deep);
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+    .pillar-text {
+      font-size: 16.5px;
+      color: var(--slate-soft);
+      line-height: 1.6;
+    }
+    .process-strip {
+      margin-top: 52px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .process-label {
+      color: var(--crimson-academic);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .process-step {
+      border-left: 3px solid var(--gold-accent);
+      padding: 8px 0 8px 16px;
+    }
+    .process-step strong {
+      color: var(--navy-deep);
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    .process-step span {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    /* Publishing Catalog Section */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .coming-soon {
+      min-height: 260px;
+      border: 2px solid var(--border-dark);
+      background: #FFFFFF;
+      padding: 48px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(6, 78, 59, 0.1);
+    }
+    .coming-soon-mark {
+      color: var(--gold-accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 24px;
+      letter-spacing: 8px;
+      margin-bottom: 14px;
+    }
+    .coming-soon h3 {
+      color: var(--navy-deep);
+      font-family: 'Cinzel', serif;
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+    .coming-soon p {
+      max-width: 620px;
+      color: var(--slate-soft);
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    .book-item {
+      background: var(--bg-paper);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.1);
+    }
+    .book-cover-mock {
+      background: var(--navy-deep);
+      color: #FFF;
+      padding: 40px 24px;
+      text-align: center;
+      position: relative;
+      border-bottom: 1px solid var(--border-subtle);
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .book-cover-mock.vol2 {
+      background: #1F5F8B;
+    }
+    .book-cover-mock.fintech {
+      background: #064E3B;
+    }
+    .book-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      padding: 2px 8px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.15);
+      color: #FFF;
+    }
+    .book-title-main {
+      font-family: 'Cinzel', serif;
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .book-sub-main {
+      font-size: 13.5px;
+      color: var(--gold-light);
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+    .book-details {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+    .book-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .book-summary {
+      font-size: 16px;
+      color: var(--slate-soft);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .book-link-btn {
+      text-decoration: none;
+      color: var(--navy-deep);
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      border-bottom: 1.5px solid var(--navy-deep);
+      padding-bottom: 2px;
+      align-self: flex-start;
+      transition: all 0.2s;
+    }
+    .book-link-btn:hover {
+      color: var(--crimson-academic);
+      border-color: var(--crimson-academic);
+    }
+
+    /* Academic Collaboration Banner */
+    .academic-callout {
+      background: var(--navy-deep);
+      color: #FFF;
+      border-radius: 2px;
+      padding: 60px 48px;
+      margin: 40px auto;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .callout-content h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      color: #FFF;
+    }
+    .callout-content p {
+      color: #CBD5E1;
+      font-size: 17.5px;
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .callout-action {
+      text-align: right;
+    }
+    .btn-gold {
+      background: var(--gold-accent);
+      color: #FFF;
+      text-decoration: none;
+      padding: 14px 30px;
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      display: inline-block;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn-gold:hover {
+      background: var(--gold-light);
+    }
+
+    /* Footer */
+    footer {
+      background: #FFFFFF;
+      border-top: 1px solid var(--border-subtle);
+      padding: 60px 24px 40px;
+      color: var(--slate-soft);
+      font-size: 15px;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-col h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      color: var(--navy-deep);
+      margin-bottom: 16px;
+      letter-spacing: 0.8px;
+    }
+    .footer-col p {
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+    .footer-col ul li a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover {
+      color: var(--crimson-academic);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+    .author-credit {
+      font-weight: 600;
+      color: var(--navy-deep);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .utility-bar { padding: 6px 16px; }
+      .utility-left span:first-child { display: none; }
+      header { padding: 16px; }
+      .nav-container { align-items: flex-start; gap: 18px; }
+      .brand-group { gap: 10px; }
+      .brand-text h1 { font-size: 17px; letter-spacing: 1px; }
+      .brand-text p { font-size: 11px; }
+      .main-nav { gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+      .main-nav a { font-size: 11px; letter-spacing: 0; }
+      .btn-contact { padding: 4px 8px; }
+      .hero-section { grid-template-columns: 1fr; gap: 40px; }
+      .architecture-layout { grid-template-columns: 1fr; gap: 42px; }
+      .vision-grid { grid-template-columns: 1fr; }
+      .vision-point { border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.28); padding-bottom: 18px; margin-right: 0; }
+      .vision-point:last-child { border-bottom: 0; }
+      .service-grid { grid-template-columns: 1fr; }
+      .capability-grid { grid-template-columns: repeat(2, 1fr); }
+      .pillars-grid, .catalog-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .academic-callout { grid-template-columns: 1fr; text-align: center; padding: 40px 24px; }
+      .callout-action { text-align: center; }
+      .footer-container { grid-template-columns: 1fr; gap: 30px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+    @media (max-width: 560px) {
+      body { font-size: 17px; }
+      .utility-left { display: none; }
+      .utility-bar { justify-content: flex-end; }
+      .nav-container { display: block; }
+      .brand-group { margin-bottom: 14px; }
+      .main-nav { justify-content: flex-start; gap: 8px 14px; }
+      .hero-section { padding: 46px 18px 36px; }
+      .hero-title { font-size: 32px; }
+      .hero-lead { font-size: 19px; }
+      .book-spread { padding: 10px; gap: 6px; box-shadow: 6px 6px 0 var(--navy-deep); }
+      .book-page { min-height: 250px; padding: 16px 12px; }
+      .architecture-copy h3 { font-size: 28px; }
+      .cta-row { flex-direction: column; align-items: stretch; }
+      .btn-primary, .btn-secondary { text-align: center; }
+      .section-wrap { padding: 48px 18px; }
+      .capability-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .section-header { display: block; }
+      .section-header p { margin-top: 10px; }
+      .academic-callout { margin: 24px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Institutional Bar -->
+  <div class="utility-bar">
+    <div class="utility-left">
+      <span data-en="CODE TO PRINT, RESEARCH TO GLOBAL BOOKS" data-bn="কোড থেকে মুদ্রণ, গবেষণা থেকে বিশ্বমানের বই">CODE TO PRINT, RESEARCH TO GLOBAL BOOKS</span>
+      <span>•</span>
+      <span data-en="DHAKA CANTONMENT, BANGLADESH" data-bn="ঢাকা সেনানিবাস, বাংলাদেশ">DHAKA CANTONMENT, BANGLADESH</span>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
+      <span>/</span>
+      <button class="lang-btn" onclick="switchLanguage('bn')">বাংলা</button>
+    </div>
+  </div>
+
+  <!-- Primary Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand-group">
+        <div class="brand-mark" aria-label="Algorism Press monogram">AP</div>
+        <div class="brand-text">
+          <h1>ALGORISM PRESS</h1>
+          <p data-en="Code to Print, Research to Global Books" data-bn="কোড থেকে মুদ্রণ, গবেষণা থেকে বিশ্বমানের বই">Code to Print, Research to Global Books</p>
+        </div>
+      </a>
+      <ul class="main-nav">
+        <li><a href="#vision" data-en="Vision" data-bn="দর্শন">Vision</a></li>
+        <li><a href="#services" data-en="What We Do" data-bn="আমরা কী করি">What We Do</a></li>
+        <li><a href="#catalog" data-en="Publications" data-bn="গ্রন্থসম্ভার">Publications</a></li>
+        <li><a href="#philosophy" data-en="Philosophy" data-bn="দর্শন">Philosophy</a></li>
+        <li><a href="#institutional" data-en="Institutional" data-bn="প্রাতিষ্ঠানিক">Institutional</a></li>
+        <li><a href="#contact" class="btn-contact" data-en="Inquire" data-bn="যোগাযোগ">Inquire</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Editorial Hero Section -->
+  <section class="hero-section" id="about">
+    <div class="hero-copy">
+      <div class="hero-pretitle" data-en="Code to Print, Research to Global Books" data-bn="কোড থেকে মুদ্রণ, গবেষণা থেকে বিশ্বমানের বই">Code to Print, Research to Global Books</div>
+      <h2 class="hero-title" data-en="From structured ideas to lasting books." data-bn="গোছানো ভাবনা থেকে দীর্ঘস্থায়ী বই।">
+        From structured ideas to lasting books.
+      </h2>
+      <p class="hero-lead" data-en="Algorism Press is building a publishing practice for technical, academic, and research-led books. We treat structure, typography, diagrams, and production as one connected act of making." data-bn="প্রযুক্তি, গবেষণা ও একাডেমিক বিষয়ের বইয়ের জন্য অ্যালগোরিজম প্রেস একটি নতুন প্রকাশনা-পদ্ধতি গড়ে তুলছে। কাঠামো, টাইপোগ্রাফি, ডায়াগ্রাম ও প্রস্তুতিকে আমরা একই কাজের অংশ হিসেবে দেখি।">
+        Algorism Press is building a publishing practice for technical, academic, and research-led books. We treat structure, typography, diagrams, and production as one connected act of making.
+      </p>
+      <div class="hero-manifesto" data-en="“We are building a careful publishing workflow where clear writing, thoughtful design, and reliable production work together.”" data-bn="“ভালো লেখা, ভাবনাসম্পন্ন নকশা আর নির্ভরযোগ্য কাজ, এই তিনের সমন্বয়ে আমরা প্রকাশনার একটি যত্নশীল পদ্ধতি গড়ে তুলছি।”">
+        “We are building a careful publishing workflow where clear writing, thoughtful design, and reliable production work together.”
+      </div>
+      <div class="cta-row">
+        <a href="#catalog" class="btn-primary" data-en="Explore Catalog" data-bn="গ্রন্থসম্ভার দেখুন">Explore Catalog</a>
+        <a href="#philosophy" class="btn-secondary" data-en="The Algorism Standard" data-bn="আমাদের মানদণ্ড">The Algorism Standard</a>
+      </div>
+    </div>
+
+    <!-- Classical Architectural Monogram -->
+    <div class="hero-artwork">
+      <div class="monogram-frame">
+        <div class="monogram-inner">
+          <div class="monogram-logo-big">AP</div>
+          <div class="monogram-latin" data-en="Scientia • Ratio • Veritas" data-bn="জ্ঞান • যুক্তি • সত্য">Scientia • Ratio • Veritas</div>
+          <p class="monogram-desc" data-en="Rooted in the mathematical discipline of 9th-century algorism, dedicated to modern global intellect." data-bn="নবম শতকের গণিতচর্চার ঐতিহ্য থেকে অনুপ্রাণিত; আধুনিক জ্ঞান ও মুক্তচিন্তার প্রতি নিবেদিত।">
+            Rooted in the mathematical discipline of 9th-century algorism, dedicated to modern global intellect.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Public Vision -->
+  <section class="section-wrap vision-section" id="vision">
+    <div class="section-header">
+      <div>
+        <h2 data-en="Why This Exists" data-bn="এই উদ্যোগের কারণ">Why This Exists</h2>
+      </div>
+      <p data-en="A PUBLIC VISION" data-bn="সবার জন্য আমাদের ভাবনা">A PUBLIC VISION</p>
+    </div>
+    <div class="vision-kicker" data-en="THE BOOK AS A BUILT OBJECT" data-bn="বইকে নির্মিত জ্ঞান হিসেবে দেখা">THE BOOK AS A BUILT OBJECT</div>
+    <h3 class="vision-statement" data-en="Publishing should give important ideas a structure strong enough to last." data-bn="গুরুত্বপূর্ণ ধারণার এমন একটি কাঠামো দরকার, যা সময় পেরিয়েও টিকে থাকে।">
+      Publishing should give important ideas a structure strong enough to last.
+    </h3>
+    <p class="vision-lead" data-en="A serious book is more than a manuscript on a page. It is an organized experience of arguments, examples, visuals, and references. We are building the practice to make that experience clear, useful, and durable." data-bn="একটি ভালো বই শুধু পৃষ্ঠায় লেখা কিছু কথা নয়। যুক্তি, উদাহরণ, ছবি ও তথ্যসূত্রকে একসঙ্গে সাজিয়ে পাঠকের জন্য একটি গোছানো অভিজ্ঞতা তৈরি করতে হয়। সেই কাজটিকে পরিষ্কার, উপযোগী ও টেকসই করার পদ্ধতিই আমরা গড়ে তুলছি।">
+      A serious book is more than a manuscript on a page. It is an organized experience of arguments, examples, visuals, and references. We are building the practice to make that experience clear, useful, and durable.
+    </p>
+    <div class="vision-grid">
+      <div class="vision-point">
+        <strong data-en="Structure" data-bn="কাঠামো">Structure</strong>
+        <span data-en="Turn complex material into a path readers can follow." data-bn="জটিল বিষয়কে এমনভাবে সাজানো, যাতে পাঠক সহজে এগোতে পারেন।">Turn complex material into a path readers can follow.</span>
+      </div>
+      <div class="vision-point">
+        <strong data-en="Clarity" data-bn="স্বচ্ছতা">Clarity</strong>
+        <span data-en="Give every page a clear purpose and a readable rhythm." data-bn="প্রতিটি পৃষ্ঠার উদ্দেশ্য স্পষ্ট রাখা এবং পড়ার স্বাভাবিক ছন্দ তৈরি করা।">Give every page a clear purpose and a readable rhythm.</span>
+      </div>
+      <div class="vision-point">
+        <strong data-en="Continuity" data-bn="স্থায়িত্ব">Continuity</strong>
+        <span data-en="Build editions that remain useful beyond a single moment." data-bn="একটি নির্দিষ্ট সময়ের পরেও কাজে লাগে, এমন সংস্করণ তৈরি করা।">Build editions that remain useful beyond a single moment.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Public Architecture Preview -->
+  <section class="section-wrap architecture-section" id="architecture">
+    <div class="section-header">
+      <div>
+        <h2 data-en="The Book as a System" data-bn="একটি বই, একটি সম্পূর্ণ ব্যবস্থা">The Book as a System</h2>
+      </div>
+      <p data-en="A PUBLIC MODEL" data-bn="প্রকাশ্য কাজের মডেল">A PUBLIC MODEL</p>
+    </div>
+    <div class="architecture-layout">
+      <div class="book-spread" aria-label="Illustration of a structured book spread">
+        <div class="book-page">
+          <div class="page-number" data-en="01 / STRUCTURE" data-bn="০১ / কাঠামো">01 / STRUCTURE</div>
+          <div class="page-heading" data-en="A clear page has a clear job." data-bn="প্রতিটি পৃষ্ঠার একটি স্পষ্ট কাজ আছে।">A clear page has a clear job.</div>
+          <div class="page-lines"><span></span><span></span><span></span></div>
+          <div class="page-lines"><span></span><span></span><span></span></div>
+          <div class="page-code"></div>
+        </div>
+        <div class="book-page">
+          <div class="page-number" data-en="02 / CONNECTION" data-bn="০২ / সংযোগ">02 / CONNECTION</div>
+          <div class="page-heading" data-en="Ideas should connect." data-bn="ভাবনাগুলো পরস্পরের সঙ্গে যুক্ত হবে।">Ideas should connect.</div>
+          <div class="page-diagram"></div>
+          <div class="page-lines"><span></span><span></span><span></span></div>
+          <div class="page-lines"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+      <div class="architecture-copy">
+        <h3 data-en="Powerful work needs visible structure." data-bn="গুরুত্বপূর্ণ কাজের জন্য দৃশ্যমান কাঠামো দরকার।">Powerful work needs visible structure.</h3>
+        <p data-en="We do not treat a book as a block of text. We see a connected system of ideas, pages, examples, visuals, and references that should work together for the reader." data-bn="আমরা বইকে শুধু কিছু লেখা হিসেবে দেখি না। পাঠকের জন্য যুক্তি, পৃষ্ঠা, উদাহরণ, ছবি ও তথ্যসূত্রকে একসঙ্গে কাজ করা একটি সম্পূর্ণ ব্যবস্থা হিসেবে দেখি।">
+          We do not treat a book as a block of text. We see a connected system of ideas, pages, examples, visuals, and references that should work together for the reader.
+        </p>
+        <div class="architecture-flow">
+          <div class="architecture-step"><b>1</b><span data-en="Start with the idea" data-bn="ভাবনা দিয়ে শুরু">Start with the idea</span></div>
+          <div class="architecture-step"><b>2</b><span data-en="Give it structure" data-bn="কাঠামো তৈরি">Give it structure</span></div>
+          <div class="architecture-step"><b>3</b><span data-en="Make it readable" data-bn="পাঠযোগ্য করে তোলা">Make it readable</span></div>
+          <div class="architecture-step"><b>4</b><span data-en="Prepare it to last" data-bn="দীর্ঘস্থায়িত্বের জন্য প্রস্তুত">Prepare it to last</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Public Service Overview -->
+  <section class="section-wrap service-section" id="services">
+    <div class="section-header">
+      <div>
+        <h2 data-en="What We Do" data-bn="আমরা কী করি">What We Do</h2>
+      </div>
+      <p data-en="A PUBLIC OVERVIEW" data-bn="এক নজরে আমাদের কাজ">A PUBLIC OVERVIEW</p>
+    </div>
+
+    <div class="service-grid">
+      <article class="service-item">
+        <div class="service-kicker" data-en="01 / STRUCTURE" data-bn="০১ / কাঠামো">01 / STRUCTURE</div>
+        <h3 data-en="Shape the manuscript" data-bn="পাণ্ডুলিপি গুছিয়ে নেওয়া">Shape the manuscript</h3>
+        <p data-en="We help organize technical and research-led writing so the argument, chapters, examples, and references are easier to follow." data-bn="প্রযুক্তি ও গবেষণাভিত্তিক লেখাকে এমনভাবে গুছিয়ে নিই, যাতে বক্তব্য, অধ্যায়, উদাহরণ ও তথ্যসূত্র সহজে বোঝা যায়।">
+          We help organize technical and research-led writing so the argument, chapters, examples, and references are easier to follow.
+        </p>
+      </article>
+      <article class="service-item">
+        <div class="service-kicker" data-en="02 / PRESENTATION" data-bn="০২ / উপস্থাপন">02 / PRESENTATION</div>
+        <h3 data-en="Make complex ideas readable" data-bn="জটিল বিষয় সহজ করে উপস্থাপন">Make complex ideas readable</h3>
+        <p data-en="Code, diagrams, tables, and long-form text need different kinds of attention. We bring them together in a calm, readable page." data-bn="কোড, ডায়াগ্রাম, টেবিল ও দীর্ঘ লেখার জন্য আলাদা মনোযোগ দরকার। আমরা সেগুলোকে একটি পরিষ্কার, পাঠযোগ্য পৃষ্ঠায় সাজাই।">
+          Code, diagrams, tables, and long-form text need different kinds of attention. We bring them together in a calm, readable page.
+        </p>
+      </article>
+      <article class="service-item">
+        <div class="service-kicker" data-en="03 / PREPARATION" data-bn="০৩ / প্রস্তুতি">03 / PREPARATION</div>
+        <h3 data-en="Prepare for publication" data-bn="প্রকাশনার প্রস্তুতি">Prepare for publication</h3>
+        <p data-en="Before a work is announced, we review its content, presentation, and production status. Only confirmed work is presented as ready." data-bn="কোনো কাজ প্রকাশের আগে তার বিষয়বস্তু, উপস্থাপনা ও প্রস্তুতির অবস্থা দেখে নেওয়া হয়। নিশ্চিত কাজকেই প্রস্তুত বলে জানানো হবে।">
+          Before a work is announced, we review its content, presentation, and production status. Only confirmed work is presented as ready.
+        </p>
+      </article>
+    </div>
+
+    <h3 class="capability-heading" data-en="Areas we are building" data-bn="যে কাজগুলো নিয়ে এগোচ্ছি">Areas we are building</h3>
+    <div class="capability-grid">
+      <article class="capability-card">
+        <h4 data-en="Structured publishing" data-bn="গোছানো প্রকাশনা">Structured publishing</h4>
+        <p data-en="A repeatable way to move from a clear manuscript to a thoughtful edition." data-bn="পরিষ্কার পাণ্ডুলিপি থেকে যত্নে তৈরি সংস্করণে যাওয়ার একটি নির্ভরযোগ্য পদ্ধতি।">
+          A repeatable way to move from a clear manuscript to a thoughtful edition.
+        </p>
+      </article>
+      <article class="capability-card">
+        <h4 data-en="Technical visual systems" data-bn="টেকনিক্যাল ভিজ্যুয়াল উপস্থাপনা">Technical visual systems</h4>
+        <p data-en="Readable treatment for code, diagrams, tables, and other dense material." data-bn="কোড, ডায়াগ্রাম, টেবিল ও জটিল উপাদানকে সহজে বোঝার মতো করে উপস্থাপন করা।">
+          Readable treatment for code, diagrams, tables, and other dense material.
+        </p>
+      </article>
+      <article class="capability-card">
+        <h4 data-en="Research-led books" data-bn="গবেষণাভিত্তিক বই">Research-led books</h4>
+        <p data-en="A careful home for academic notes, technical guides, and focused research." data-bn="অ্যাকাডেমিক নোট, টেকনিক্যাল গাইড ও নির্দিষ্ট গবেষণার জন্য একটি নির্ভরযোগ্য প্রকাশনা-পরিসর।">
+          A careful home for academic notes, technical guides, and focused research.
+        </p>
+      </article>
+      <article class="capability-card">
+        <h4 data-en="Digital and print preparation" data-bn="ডিজিটাল ও মুদ্রণ প্রস্তুতি">Digital and print preparation</h4>
+        <p data-en="One editorial standard across screens, pages, and future formats." data-bn="স্ক্রিন, পৃষ্ঠা ও ভবিষ্যৎ ফরম্যাটে একই সম্পাদকীয় মান ধরে রাখা।">
+          One editorial standard across screens, pages, and future formats.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Three Core Pillars Section -->
+  <section class="section-wrap" id="philosophy">
+    <div class="section-header">
+      <div>
+        <h2 data-en="How We Work" data-bn="আমাদের কাজের পদ্ধতি">How We Work</h2>
+      </div>
+      <p data-en="CLEAR WRITING • CAREFUL PRODUCTION" data-bn="পরিষ্কার লেখা • যত্নশীল প্রস্তুতি">CLEAR WRITING • CAREFUL PRODUCTION</p>
+    </div>
+
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-num" data-en="01 / DISCIPLINE" data-bn="০১ / শৃঙ্খলা">01 / DISCIPLINE</div>
+        <h3 class="pillar-title" data-en="Readable layouts" data-bn="পাঠযোগ্য বিন্যাস">Readable layouts</h3>
+        <p class="pillar-text" data-en="We are developing a structured workflow for typography, code examples, diagrams, and page composition. Each format is reviewed for clarity before it becomes part of a finished edition." data-bn="টাইপোগ্রাফি, কোডের উদাহরণ, ডায়াগ্রাম এবং পৃষ্ঠা বিন্যাসের জন্য আমরা একটি সুসংগঠিত প্রক্রিয়া তৈরি করছি। চূড়ান্ত সংস্করণের আগে প্রতিটি ফরম্যাটের পাঠযোগ্যতা পর্যালোচনা করা হবে।">
+          We are developing a structured workflow for typography, code examples, diagrams, and page composition. Each format is reviewed for clarity before it becomes part of a finished edition.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num" data-en="02 / STEWARDSHIP" data-bn="০২ / দায়িত্বশীলতা">02 / STEWARDSHIP</div>
+        <h3 class="pillar-title" data-en="Respectful collaboration" data-bn="লেখক ও সহযোগীদের সঙ্গে স্বচ্ছ কাজ">Respectful collaboration</h3>
+        <p class="pillar-text" data-en="We want authors and collaborators to understand the editorial process, scope, and responsibilities clearly. Any future publishing or compensation terms will be discussed directly and documented before work begins." data-bn="লেখক ও সহযোগীরা যেন সম্পাদনা-প্রক্রিয়া, কাজের পরিধি এবং দায়িত্ব স্পষ্টভাবে বুঝতে পারেন, সেটিই আমাদের লক্ষ্য। ভবিষ্যতের যেকোনো প্রকাশনা বা পারিশ্রমিকের শর্ত কাজ শুরুর আগে সরাসরি আলোচনা ও লিখিতভাবে নির্ধারণ করা হবে।">
+          We want authors and collaborators to understand the editorial process, scope, and responsibilities clearly. Any future publishing or compensation terms will be discussed directly and documented before work begins.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num" data-en="03 / HORIZON" data-bn="০৩ / ভবিষ্যৎ">03 / HORIZON</div>
+        <h3 class="pillar-title" data-en="Future editions" data-bn="ভবিষ্যৎ সংস্করণ">Future editions</h3>
+        <p class="pillar-text" data-en="The portal is being prepared for future digital and print-ready publications. Distribution channels, partnerships, and availability will be announced only when they are confirmed." data-bn="ভবিষ্যতের ডিজিটাল ও প্রিন্ট-রেডি প্রকাশনার জন্য পোর্টালটি প্রস্তুত করা হচ্ছে। বিতরণ-চ্যানেল, অংশীদারিত্ব এবং প্রাপ্যতা নিশ্চিত হওয়ার পরেই জানানো হবে।">
+          The portal is being prepared for future digital and print-ready publications. Distribution channels, partnerships, and availability will be announced only when they are confirmed.
+        </p>
+      </div>
+    </div>
+
+    <div class="process-strip">
+      <div class="process-label" data-en="OUR SIMPLE PROCESS" data-bn="আমাদের কাজের ধাপ">OUR SIMPLE PROCESS</div>
+      <div class="process-grid">
+        <div class="process-step">
+          <strong data-en="Manuscript" data-bn="প্রথম খসড়া">Manuscript</strong>
+          <span data-en="A clear starting point" data-bn="কাজের শুরু">A clear starting point</span>
+        </div>
+        <div class="process-step">
+          <strong data-en="Structure" data-bn="কাঠামো">Structure</strong>
+          <span data-en="Organize the ideas" data-bn="ভাবনাগুলো গুছিয়ে নেওয়া">Organize the ideas</span>
+        </div>
+        <div class="process-step">
+          <strong data-en="Presentation" data-bn="উপস্থাপন">Presentation</strong>
+          <span data-en="Make each page useful" data-bn="প্রতিটি পৃষ্ঠা কাজে লাগানো">Make each page useful</span>
+        </div>
+        <div class="process-step">
+          <strong data-en="Review" data-bn="পর্যালোচনা">Review</strong>
+          <span data-en="Share only when ready" data-bn="প্রস্তুত হলে প্রকাশ">Share only when ready</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Published & Forthcoming Catalog -->
+  <section class="section-wrap" id="catalog" style="background:#FFFFFF;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);">
+    <div class="section-header">
+      <div>
+        <h2 data-en="Current Work" data-bn="বর্তমান কাজ">Current Work</h2>
+      </div>
+      <p data-en="SELECTED & IN DEVELOPMENT" data-bn="নির্বাচিত ও নির্মাণাধীন কাজ">SELECTED & IN DEVELOPMENT</p>
+    </div>
+
+    <div class="coming-soon" role="status">
+      <div class="coming-soon-mark">· · ·</div>
+      <h3 data-en="Coming soon" data-bn="শীঘ্রই আসছে">Coming soon</h3>
+      <p data-en="Our first publications are still being prepared. This space will be updated when there is something real and ready to share." data-bn="আমাদের প্রথম বইগুলো এখনও প্রস্তুত হচ্ছে। সত্যিই প্রকাশের মতো কিছু তৈরি হলে এই জায়গায় জানানো হবে।">
+        Our first publications are still being prepared. This space will be updated when there is something real and ready to share.
+      </p>
+    </div>
+  </section>
+
+  <!-- Institutional Collaboration Section -->
+  <section class="section-wrap" id="institutional">
+    <div class="academic-callout">
+      <div class="callout-content">
+        <h3 data-en="For Academic Faculty & University Presses" data-bn="বিশ্ববিদ্যালয়ের শিক্ষক ও গবেষকদের জন্য">For Academic Faculty & University Presses</h3>
+        <p data-en="Are you an educator or researcher with lecture manuscripts, technical monographs, or course textbooks? Algorism Press is preparing a careful editorial and production workflow for future collaborations." data-bn="আপনি কি শিক্ষক বা গবেষক? আপনার লেকচার নোট, গবেষণাপত্র বা টেকনিক্যাল বইয়ের খসড়া আছে? ভবিষ্যতের সহযোগিতার জন্য অ্যালগোরিজম প্রেস একটি স্বচ্ছ সম্পাদনা ও প্রস্তুতি-প্রক্রিয়া গড়ে তুলছে।">
+          Are you an educator or researcher with lecture manuscripts, technical monographs, or course textbooks? Algorism Press is preparing a careful editorial and production workflow for future collaborations.
+        </p>
+        <p style="font-size:14px;color:var(--gold-light);font-family:'JetBrains Mono', monospace;" data-en="Clear scope. Careful editorial production." data-bn="কাজের পরিধি স্পষ্ট। সম্পাদনা ও প্রস্তুতিতে যত্ন।">
+          Clear scope. Careful editorial production.
+        </p>
+      </div>
+      <div class="callout-action">
+        <a href="#contact" class="btn-gold" data-en="Institutional Inquiry" data-bn="যোগাযোগ করুন">Institutional Inquiry</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>ALGORISM PRESS</h4>
+        <p data-en="Publishing infrastructure and editorial practice for computer science, modern finance, and research-led literature." data-bn="কম্পিউটার বিজ্ঞান, আধুনিক অর্থনীতি ও গবেষণাভিত্তিক লেখার জন্য একটি প্রকাশনা-অবকাঠামো ও সম্পাদকীয় পদ্ধতি।">
+          Publishing infrastructure and editorial practice for computer science, modern finance, and research-led literature.
+        </p>
+        <p style="font-family:'JetBrains Mono', monospace;font-size:12px;color:var(--text-muted)">
+          <span data-en="Current status: portal and publishing workflow in development" data-bn="বর্তমান অবস্থা: পোর্টাল ও প্রকাশনা-প্রক্রিয়া প্রস্তুত হচ্ছে">Current status: portal and publishing workflow in development</span><br>
+          <span data-en="Availability: to be announced when confirmed" data-bn="প্রাপ্যতা: নিশ্চিত হলে জানানো হবে">Availability: to be announced when confirmed</span>
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-en="Editorial Divisions" data-bn="বিভাগসমূহ">Editorial Divisions</h4>
+        <ul>
+          <li><a href="#catalog" data-en="Computational Sciences" data-bn="কম্পিউটার বিজ্ঞান">Computational Sciences</a></li>
+          <li><a href="#catalog" data-en="Modern Financial Architecture" data-bn="আধুনিক আর্থিক কাঠামো">Modern Financial Architecture</a></li>
+          <li><a href="#catalog" data-en="Foundational Pedagogy" data-bn="ভিত্তিমূলক শিক্ষাবিষয়ক কাজ">Foundational Pedagogy</a></li>
+          <li><a href="#vision" data-en="The Algorism Philosophy" data-bn="অ্যালগোরিজম প্রেসের দর্শন">The Algorism Philosophy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-en="Contact Us" data-bn="যোগাযোগ করুন">Contact Us</h4>
+        <p data-en="Project repository:" data-bn="প্রজেক্ট রিপোজিটরি: ">Project repository:</p>
+        <p style="font-family:'JetBrains Mono', monospace;font-size:13px;">
+          <a href="https://github.com/AlgorismPress" target="_blank" style="color:var(--navy-deep);font-weight:600">github.com/AlgorismPress</a>
+        </p>
+        <p style="margin-top:14px;font-size:13.5px;" data-en="Dhaka Cantonment, Dhaka, Bangladesh." data-bn="ঢাকা সেনানিবাস, ঢাকা, বাংলাদেশ।">
+          Dhaka Cantonment, Dhaka, Bangladesh.
+        </p>
+        <p style="font-family:'JetBrains Mono', monospace;font-size:13px;line-height:1.8;">
+          <a href="mailto:rafi@gmrafi.com.bd" style="color:var(--navy-deep);font-weight:600">rafi@gmrafi.com.bd</a><br>
+          <a href="tel:+8801353030714" style="color:var(--navy-deep);font-weight:600">+880 1353-030714</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div data-en="© 2026 Algorism Press. All rights reserved." data-bn="© ২০২৬ অ্যালগোরিজম প্রেস। সর্বস্বত্ব সংরক্ষিত।">
+        © 2026 Algorism Press. All rights reserved.
+      </div>
+      <div>
+        <span class="author-credit" data-en="Designed & Architected by Md Golam Mubasshir Rafi" data-bn="নকশা ও কারিগরি স্থাপনা: মোঃ গোলাম মুবাশশির রাফি">Designed & Architected by Md Golam Mubasshir Rafi</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function switchLanguage(lang) {
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.querySelector(`.lang-btn[onclick*="${lang}"]`);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const text = el.getAttribute(`data-${lang}`);
+        if (text) el.textContent = text;
+      });
+      document.documentElement.lang = lang;
+      document.title = lang === 'bn'
+        ? 'অ্যালগোরিজম প্রেস: একাডেমিক ও টেকনিক্যাল প্রকাশনা'
+        : 'Algorism Press: Academic & Technical Publishing Infrastructure';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algorism Press: The Brand</title>
+  <meta name="description" content="Public Algorism Press brand reference, logo variants, colors, typography, and usage guidance.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #1F7A5C;
+      --green-dark: #176149;
+      --blue: #5170FF;
+      --ink: #173F3F;
+      --muted: #4D6868;
+      --line: #C6D5CB;
+      --paper: #FFFFFF;
+      --soft: #F8F8F6;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+    .topbar {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+    .back-link {
+      color: var(--green);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+    .language {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+    .language button {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 8px;
+      font: inherit;
+    }
+    .language button.active { color: var(--green); font-weight: 700; }
+    main { max-width: 1180px; margin: 0 auto; padding: 70px 24px 100px; }
+    .eyebrow {
+      color: var(--blue);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+    h1 {
+      color: var(--green);
+      font-family: 'Cinzel', serif;
+      font-size: clamp(34px, 6vw, 64px);
+      line-height: 1.1;
+      margin: 0 0 16px;
+    }
+    .intro { max-width: 700px; color: var(--muted); font-size: 20px; margin-bottom: 52px; }
+    .logo-stage {
+      display: grid;
+      grid-template-columns: 1.4fr 0.6fr;
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+    .logo-card {
+      min-height: 300px;
+      padding: 28px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 8px 8px 0 var(--soft);
+    }
+    .logo-visual {
+      min-height: 190px;
+      width: 100%;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+    .logo-variant-label {
+      color: var(--muted);
+      font: 11px 'JetBrains Mono', monospace;
+      letter-spacing: 0.4px;
+      margin: 18px 0 14px;
+      text-align: center;
+    }
+    .variant-wordmark { display: flex; align-items: center; gap: 14px; }
+    .variant-wordmark .mark { width: 66px; height: 66px; font-size: 25px; }
+    .variant-wordmark h2 { font-size: 19px; }
+    .variant-wordmark p { font-size: 8px; }
+    .variant-stacked h2 { color: var(--green); font: 700 25px/1.1 'Cinzel', serif; letter-spacing: 1px; }
+    .variant-stacked p { color: var(--blue); font: 600 10px 'JetBrains Mono', monospace; margin-top: 10px; }
+    .variant-outline { background: #FFFFFF; border: 3px solid var(--green); color: var(--green); box-shadow: inset 0 0 0 8px rgba(81, 112, 255, 0.14); }
+    .variant-compact { width: 128px; height: 128px; font-size: 50px; }
+    .variant-hero { width: 150px; height: 150px; font-size: 64px; }
+    .variant-hero-reverse { width: 150px; height: 150px; font-size: 64px; color: #FFFFFF; background: var(--green); border-color: var(--blue); }
+    .variant-wordmark-reverse { color: #FFFFFF; background: var(--green); padding: 18px; }
+    .variant-wordmark-reverse h2 { color: #FFFFFF; }
+    .variant-wordmark-reverse p { color: #B8C5FF; }
+    .variant-wordmark-reverse .mark { background: #FFFFFF; color: var(--green); box-shadow: none; }
+    .variant-blue { background: var(--blue); border-color: var(--green); color: #FFFFFF; }
+    .variant-ink { background: var(--ink); border-color: var(--green); color: #FFFFFF; }
+    .variant-white { background: #FFFFFF; border-color: var(--blue); color: var(--green); box-shadow: none; }
+    .variant-square { width: 128px; height: 128px; border-radius: 18px; font-size: 48px; }
+    .variant-text-only { color: var(--green); font: 700 29px/1.1 'Cinzel', serif; letter-spacing: 1px; text-align: center; }
+    .variant-text-only span { display: block; color: var(--blue); font: 600 9px 'JetBrains Mono', monospace; letter-spacing: 0.6px; margin-top: 10px; }
+    .variant-stacked-reverse { background: var(--green); color: #FFFFFF; padding: 20px; text-align: center; }
+    .variant-stacked-reverse h2 { color: #FFFFFF; font: 700 25px/1.1 'Cinzel', serif; letter-spacing: 1px; }
+    .variant-stacked-reverse p { color: #B8C5FF; font: 600 10px 'JetBrains Mono', monospace; margin-top: 10px; }
+    .brand-guide {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 52px 0 0;
+    }
+    .guide-block {
+      border-top: 3px solid var(--green);
+      padding-top: 18px;
+    }
+    .guide-block:nth-child(2) { border-top-color: var(--blue); }
+    .guide-block h2 { color: var(--ink); font: 700 21px 'Cinzel', serif; margin: 0 0 14px; }
+    .guide-block p, .guide-block li { color: var(--muted); font-size: 16px; line-height: 1.5; }
+    .guide-block ul { margin: 0; padding-left: 20px; }
+    .swatch { display: flex; align-items: center; gap: 10px; margin: 9px 0; }
+    .swatch i { width: 24px; height: 24px; display: block; border: 1px solid var(--line); }
+    .swatch-green i { background: #1F7A5C; }
+    .swatch-blue i { background: #5170FF; }
+    .swatch-ink i { background: #173F3F; }
+    .swatch span { font: 12px 'JetBrains Mono', monospace; color: var(--muted); }
+    .variant-download { width: 100%; padding: 10px 12px; font-size: 12px; }
+    .wordmark { display: flex; align-items: center; gap: 22px; }
+    .mark {
+      width: 92px;
+      height: 92px;
+      display: grid;
+      place-items: center;
+      background: var(--green);
+      border: 3px solid var(--blue);
+      color: #FFFFFF;
+      font: 800 34px/1 'Cinzel', serif;
+      letter-spacing: -2px;
+      box-shadow: inset 0 0 0 7px rgba(81, 112, 255, 0.2);
+    }
+    .wordmark h2 {
+      color: var(--green);
+      font: 700 clamp(21px, 3vw, 32px)/1.15 'Cinzel', serif;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+    .wordmark p {
+      color: var(--blue);
+      font: 600 11px/1.5 'JetBrains Mono', monospace;
+      letter-spacing: 0.4px;
+      margin: 10px 0 0;
+    }
+    .hero-mark {
+      width: 150px;
+      height: 150px;
+      display: grid;
+      place-items: center;
+      background: #FFFFFF;
+      border: 3px solid var(--green);
+      color: var(--green);
+      font: 800 64px/1 'Cinzel', serif;
+      letter-spacing: -4px;
+      box-shadow: inset 0 0 0 9px rgba(81, 112, 255, 0.14);
+    }
+    .asset-label {
+      align-self: flex-end;
+      color: var(--muted);
+      font: 11px 'JetBrains Mono', monospace;
+      margin-top: 22px;
+      text-align: center;
+    }
+    .download {
+      background: var(--green);
+      border: 1px solid var(--green);
+      color: #FFFFFF;
+      cursor: pointer;
+      font: 700 14px 'Cinzel', serif;
+      letter-spacing: 0.5px;
+      padding: 14px 22px;
+    }
+    .download:hover { background: var(--blue); border-color: var(--blue); }
+    .note {
+      margin-top: 54px;
+      border-top: 1px solid var(--line);
+      padding-top: 22px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    @media (max-width: 760px) {
+      .topbar { padding: 14px 18px; }
+      main { padding: 48px 18px 70px; }
+      .logo-grid { grid-template-columns: 1fr; }
+      .brand-guide { grid-template-columns: 1fr; }
+      .logo-card { min-height: 250px; padding: 24px; }
+      .wordmark { gap: 14px; }
+      .mark { width: 72px; height: 72px; font-size: 27px; }
+      .wordmark p { font-size: 9px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="back-link" href="index.html" data-en="Back to portal" data-bn="পোর্টালে ফিরে যান">Back to portal</a>
+    <div class="language">
+      <button class="active" type="button" onclick="switchLanguage('en')">EN</button>
+      <span>/</span>
+      <button type="button" onclick="switchLanguage('bn')">বাংলা</button>
+    </div>
+  </header>
+  <main>
+    <div class="eyebrow" data-en="PUBLIC BRAND ASSETS" data-bn="সবার ব্যবহারের জন্য ব্র্যান্ড উপাদান">PUBLIC BRAND ASSETS</div>
+    <h1 data-en="The Brand" data-bn="ব্র্যান্ড নির্দেশিকা">The Brand</h1>
+    <p class="intro" data-en="A public reference for the Algorism Press logo system, colors, typography, and proper use. Sixteen practical variants are available as individual PNG assets." data-bn="অ্যালগোরিজম প্রেসের লোগো, রঙ, টাইপোগ্রাফি ও সঠিক ব্যবহারের জন্য একটি প্রকাশ্য নির্দেশিকা। ব্যবহারভেদে ষোলোটি লোগো-রূপ আলাদা PNG হিসেবে ডাউনলোড করা যাবে।">
+      A public reference for the Algorism Press logo system, colors, typography, and proper use. Sixteen practical variants are available as individual PNG assets.
+    </p>
+    <div class="logo-grid">
+      <article class="logo-card">
+        <div class="logo-visual"><div class="hero-mark variant-hero" aria-label="AP hero monogram">AP</div></div>
+        <div class="logo-variant-label" data-en="01 / HERO MONOGRAM" data-bn="০১ / হিরো মনোগ্রাম">01 / HERO MONOGRAM</div>
+        <button class="download variant-download" type="button" onclick="downloadLogo('hero')" data-en="Download PNG" data-bn="PNG ডাউনলোড">Download PNG</button>
+      </article>
+      <article class="logo-card">
+        <div class="logo-visual"><div class="variant-wordmark"><div class="mark" aria-hidden="true">AP</div><div><h2>ALGORISM PRESS</h2><p>CODE TO PRINT, RESEARCH TO GLOBAL BOOKS</p></div></div></div>
+        <div class="logo-variant-label" data-en="02 / FULL WORDMARK" data-bn="০২ / পূর্ণ ওয়ার্ডমার্ক">02 / FULL WORDMARK</div>
+        <button class="download variant-download" type="button" onclick="downloadLogo('full')" data-en="Download PNG" data-bn="PNG ডাউনলোড">Download PNG</button>
+      </article>
+      <article class="logo-card">
+        <div class="logo-visual"><div class="hero-mark variant-hero-reverse" aria-label="AP reversed hero monogram">AP</div></div>
+        <div class="logo-variant-label" data-en="03 / REVERSED HERO MONOGRAM" data-bn="০৩ / উল্টো রঙের হিরো মনোগ্রাম">03 / REVERSED HERO MONOGRAM</div>
+        <button class="download variant-download" type="button" onclick="downloadLogo('hero-reverse')" data-en="Download PNG" data-bn="PNG ডাউনলোড">Download PNG</button>
+      </article>
+      <article class="logo-card">
+        <div class="logo-visual"><div class="variant-wordmark variant-wordmark-reverse"><div class="mark" aria-hidden="true">AP</div><div><h2>ALGORISM PRESS</h2><p>CODE TO PRINT, RESEARCH TO GLOBAL BOOKS</p></div></div></div>
+        <div class="logo-variant-label" data-en="04 / REVERSED FULL WORDMARK" data-bn="০৪ / উল্টো রঙের পূর্ণ ওয়ার্ডমার্ক">04 / REVERSED FULL WORDMARK</div>
+        <button class="download variant-download" type="button" onclick="downloadLogo('full-reverse')" data-en="Download PNG" data-bn="PNG ডাউনলোড">Download PNG</button>
+      </article>
+      <article class="logo-card">
+        <div class="logo-visual"><div class="mark variant-compact" aria-label="AP compact mark">AP</div></div>
+        <div class="logo-variant-label" data-en="05 / COMPACT AP MARK" data-bn="০৫ / কমপ্যাক্ট AP মার্ক">05 / COMPACT AP MARK</div>
+        <button class="download variant-download" type="button" onclick="downloadLogo('compact')" data-en="Download PNG" data-bn="PNG ডাউনলোড">Download PNG</button>
+      </article>
+      <article class="logo-card">
+        <div class="logo-visual"><div class="mark variant-compact variant-outline" aria-label="AP outline mark">AP</div></div>
+        <div class="logo-variant-label" data-en="06 / OUTLINE AP MARK" data-bn="০৬ / আউটলাইন AP মার্ক">06 / OUTLINE AP MARK</div>
+        <button class="download variant-download" type="button" onclick="downloadLogo('outline')" data-en="Download PNG" data-bn="PNG ডাউনলোড">Download PNG</button>
+      </article>
+      <article class="logo-card">
+        <div class="logo-visual"><div class="mark variant-blue variant-compact" aria-label="AP blue accent mark">AP</div></div>
+        <div class="logo-variant-label" data-en="07 / BLUE ACCENT MARK" data-bn="০৭ / নীল অ্যাকসেন্ট মার্ক">07 / BLUE ACCENT MARK</div>
+        <button class="download variant-download" type="button" onclick="downloadLogo('blue')" data-en="Download PNG" data-bn="PNG ডাউনলোড">Download PNG</button>
+      </article>
+      <article class="logo-card">
+        <div class="logo-visual"><div class="mark variant-ink variant-compact" aria-label="AP ink mark">AP</div></div>
+        <div class="logo-variant-label" data-en="08 / INK MARK" data-bn="০৮ / কালি রঙের মার্ক">08 / INK MARK</div>
+        <button class="download variant-download" type="button" onclick="downloadLogo('ink')" data-en="Download PNG" data-bn="PNG ডাউনলোড">Download PNG</button>
+      </article>
+      <article class="logo-card">
+        <div class="logo-visual"><div class="variant-text-only">ALGORISM PRESS<span>CODE TO PRINT</span></div></div>
+        <div class="logo-variant-label" data-en="09 / TEXT-ONLY WORDMARK" data-bn="০৯ / শুধু লেখা ওয়ার্ডমার্ক">09 / TEXT-ONLY WORDMARK</div>
+        <button class="download variant-download" type="button" onclick="downloadLogo('text')" data-en="Download PNG" data-bn="PNG ডাউনলোড">Download PNG</button>
+      </article>
+      <article class="logo-card">
+        <div class="logo-visual"><div class="mark variant-white variant-compact" aria-label="AP white field mark">AP</div></div>
+        <div class="logo-variant-label" data-en="10 / WHITE FIELD MARK" data-bn="১০ / সাদা ফিল্ড মার্ক">10 / WHITE FIELD MARK</div>
+        <button class="download variant-download" type="button" onclick="downloadLogo('white')" data-en="Download PNG" data-bn="PNG ডাউনলোড">Download PNG</button>
+      </article>
+      <article class="logo-card">
+        <div class="logo-visual"><div class="mark variant-square" aria-label="AP social avatar">AP</div></div>
+        <div class="logo-variant-label" data-en="11 / SOCIAL AVATAR" data-bn="১১ / সোশ্যাল অ্যাভাটার">11 / SOCIAL AVATAR</div>
+        <button class="download variant-download" type="button" onclick="downloadLogo('avatar')" data-en="Download PNG" data-bn="PNG ডাউনলোড">Download PNG</button>
+      </article>
+      <article class="logo-card">
+        <div class="logo-visual"><div class="mark variant-compact" aria-label="AP favicon mark">AP</div></div>
+        <div class="logo-variant-label" data-en="12 / SMALL-SIZE MARK" data-bn="১২ / ছোট আকারের মার্ক">12 / SMALL-SIZE MARK</div>
+        <button class="download variant-download" type="button" onclick="downloadLogo('small')" data-en="Download PNG" data-bn="PNG ডাউনলোড">Download PNG</button>
+      </article>
+      <article class="logo-card">
+        <div class="logo-visual"><div class="variant-stacked-reverse"><h2>ALGORISM</h2><h2>PRESS</h2><p>RESEARCH TO GLOBAL BOOKS</p></div></div>
+        <div class="logo-variant-label" data-en="13 / REVERSED STACKED" data-bn="১৩ / উল্টো রঙের স্তূপীকৃত মার্ক">13 / REVERSED STACKED</div>
+        <button class="download variant-download" type="button" onclick="downloadLogo('stacked-reverse')" data-en="Download PNG" data-bn="PNG ডাউনলোড">Download PNG</button>
+      </article>
+      <article class="logo-card">
+        <div class="logo-visual"><div class="variant-wordmark"><div class="mark" aria-hidden="true">AP</div><div><h2>ALGORISM PRESS</h2><p>CODE TO PRINT</p></div></div></div>
+        <div class="logo-variant-label" data-en="14 / SHORT WORDMARK" data-bn="১৪ / সংক্ষিপ্ত ওয়ার্ডমার্ক">14 / SHORT WORDMARK</div>
+        <button class="download variant-download" type="button" onclick="downloadLogo('short')" data-en="Download PNG" data-bn="PNG ডাউনলোড">Download PNG</button>
+      </article>
+      <article class="logo-card">
+        <div class="logo-visual"><div class="mark variant-blue variant-square" aria-label="AP blue social avatar">AP</div></div>
+        <div class="logo-variant-label" data-en="15 / BLUE SOCIAL AVATAR" data-bn="১৫ / নীল সোশ্যাল অ্যাভাটার">15 / BLUE SOCIAL AVATAR</div>
+        <button class="download variant-download" type="button" onclick="downloadLogo('blue-avatar')" data-en="Download PNG" data-bn="PNG ডাউনলোড">Download PNG</button>
+      </article>
+      <article class="logo-card">
+        <div class="logo-visual"><div class="mark variant-ink variant-square" aria-label="AP ink social avatar">AP</div></div>
+        <div class="logo-variant-label" data-en="16 / INK SOCIAL AVATAR" data-bn="১৬ / কালি রঙের সোশ্যাল অ্যাভাটার">16 / INK SOCIAL AVATAR</div>
+        <button class="download variant-download" type="button" onclick="downloadLogo('ink-avatar')" data-en="Download PNG" data-bn="PNG ডাউনলোড">Download PNG</button>
+      </article>
+    </div>
+    <div class="brand-guide">
+      <section class="guide-block">
+        <h2 data-en="Color system" data-bn="রঙের ব্যবস্থা">Color system</h2>
+        <div class="swatch swatch-green"><i></i><span>Primary green #1F7A5C</span></div>
+        <div class="swatch swatch-blue"><i></i><span>Secondary blue #5170FF</span></div>
+        <div class="swatch swatch-ink"><i></i><span>Reading ink #173F3F</span></div>
+      </section>
+      <section class="guide-block">
+        <h2 data-en="Typography" data-bn="টাইপোগ্রাফি">Typography</h2>
+        <p data-en="Cinzel is for the wordmark, display headings, and logo lettering. EB Garamond is for editorial reading. JetBrains Mono is for technical labels and metadata." data-bn="ওয়ার্ডমার্ক, বড় শিরোনাম ও লোগোর অক্ষরের জন্য Cinzel ব্যবহার করা হবে। দীর্ঘ পাঠের জন্য EB Garamond। টেকনিক্যাল label ও metadata-র জন্য JetBrains Mono।">
+          Cinzel is for the wordmark, display headings, and logo lettering. EB Garamond is for editorial reading. JetBrains Mono is for technical labels and metadata.
+        </p>
+      </section>
+      <section class="guide-block">
+        <h2 data-en="Proper use" data-bn="সঠিক ব্যবহার">Proper use</h2>
+        <ul>
+          <li data-en="Keep clear space around the mark." data-bn="লোগোর চারপাশে পর্যাপ্ত খালি জায়গা রাখুন।">Keep clear space around the mark.</li>
+          <li data-en="Use green on white or white on green." data-bn="সাদা পটভূমিতে সবুজ, অথবা সবুজ পটভূমিতে সাদা লোগো ব্যবহার করুন।">Use green on white or white on green.</li>
+          <li data-en="Do not stretch, rotate, or redraw the mark." data-bn="লোগো টানবেন না, ঘোরাবেন না, নতুন করে আঁকবেন না।">Do not stretch, rotate, or redraw the mark.</li>
+        </ul>
+      </section>
+    </div>
+    <p class="note" data-en="Use the full wordmark when the name needs to be clear, and choose a monogram when space is limited." data-bn="নামটি স্পষ্টভাবে দেখাতে পূর্ণ ওয়ার্ডমার্ক ব্যবহার করুন; জায়গা কম হলে মনোগ্রাম বেছে নিন।">
+      Use the full wordmark when the name needs to be clear, and choose a monogram when space is limited.
+    </p>
+  </main>
+  <script>
+    function drawMonogram(context, x, y, size, outline) {
+      context.fillStyle = outline ? '#FFFFFF' : '#1F7A5C';
+      context.strokeStyle = '#5170FF';
+      context.lineWidth = 8;
+      context.fillRect(x, y, size, size);
+      context.strokeRect(x, y, size, size);
+      if (outline) {
+        context.strokeStyle = '#1F7A5C';
+        context.lineWidth = 10;
+        context.strokeRect(x + 12, y + 12, size - 24, size - 24);
+      }
+      context.fillStyle = outline ? '#1F7A5C' : '#FFFFFF';
+      context.font = `800 ${Math.round(size * 0.38)}px Cinzel`;
+      context.fillText('AP', x + size * 0.25, y + size * 0.63);
+    }
+
+    function downloadLogo(type) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 1400;
+      canvas.height = 900;
+      const context = canvas.getContext('2d');
+      context.fillStyle = '#FFFFFF';
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.strokeStyle = '#C6D5CB';
+      context.lineWidth = 4;
+      context.strokeRect(36, 36, canvas.width - 72, canvas.height - 72);
+      context.fillStyle = '#173F3F';
+      context.font = '700 30px "JetBrains Mono"';
+      context.fillText('ALGORISM PRESS / PUBLIC LOGO ASSET', 90, 110);
+      context.fillStyle = '#1F7A5C';
+      context.fillRect(90, 138, 1220, 5);
+      if (type === 'hero') {
+        drawMonogram(context, 510, 250, 380, true);
+        context.fillStyle = '#4D6868';
+        context.font = '600 24px "JetBrains Mono"';
+        context.fillText('HERO MONOGRAM', 590, 700);
+      } else if (type === 'full') {
+        drawMonogram(context, 120, 280, 220, false);
+        context.fillStyle = '#1F7A5C';
+        context.font = '700 68px Cinzel';
+        context.fillText('ALGORISM PRESS', 410, 365);
+        context.fillStyle = '#5170FF';
+        context.font = '600 24px "JetBrains Mono"';
+        context.fillText('CODE TO PRINT, RESEARCH TO GLOBAL BOOKS', 415, 420);
+      } else if (type === 'hero-reverse') {
+        drawMonogram(context, 510, 250, 380, false);
+        context.fillStyle = '#4D6868';
+        context.font = '600 24px "JetBrains Mono"';
+        context.fillText('REVERSED HERO MONOGRAM', 530, 700);
+      } else if (type === 'full-reverse') {
+        context.fillStyle = '#1F7A5C';
+        context.fillRect(70, 205, 1260, 470);
+        drawMonogram(context, 140, 330, 220, false);
+        context.fillStyle = '#FFFFFF';
+        context.font = '700 62px Cinzel';
+        context.fillText('ALGORISM PRESS', 430, 400);
+        context.fillStyle = '#B8C5FF';
+        context.font = '600 24px "JetBrains Mono"';
+        context.fillText('CODE TO PRINT, RESEARCH TO GLOBAL BOOKS', 435, 455);
+      } else if (type === 'blue') {
+        context.fillStyle = '#5170FF';
+        context.fillRect(535, 250, 330, 330);
+        context.fillStyle = '#FFFFFF';
+        context.font = '800 126px Cinzel';
+        context.fillText('AP', 625, 465);
+      } else if (type === 'ink') {
+        context.fillStyle = '#173F3F';
+        context.fillRect(535, 250, 330, 330);
+        context.fillStyle = '#FFFFFF';
+        context.font = '800 126px Cinzel';
+        context.fillText('AP', 625, 465);
+      } else if (type === 'text') {
+        context.textAlign = 'center';
+        context.fillStyle = '#1F7A5C';
+        context.font = '700 68px Cinzel';
+        context.fillText('ALGORISM PRESS', 700, 400);
+        context.fillStyle = '#5170FF';
+        context.font = '600 24px "JetBrains Mono"';
+        context.fillText('CODE TO PRINT', 700, 455);
+        context.textAlign = 'start';
+      } else if (type === 'white') {
+        drawMonogram(context, 535, 250, 330, true);
+      } else if (type === 'avatar') {
+        context.fillStyle = '#1F7A5C';
+        context.fillRect(500, 215, 400, 400);
+        context.fillStyle = '#FFFFFF';
+        context.font = '800 150px Cinzel';
+        context.fillText('AP', 610, 475);
+      } else if (type === 'small') {
+        drawMonogram(context, 565, 280, 270, false);
+      } else if (type === 'stacked-reverse') {
+        context.fillStyle = '#1F7A5C';
+        context.fillRect(280, 190, 840, 500);
+        context.textAlign = 'center';
+        context.fillStyle = '#FFFFFF';
+        context.font = '700 78px Cinzel';
+        context.fillText('ALGORISM', 700, 400);
+        context.fillText('PRESS', 700, 500);
+        context.fillStyle = '#B8C5FF';
+        context.font = '600 22px "JetBrains Mono"';
+        context.fillText('RESEARCH TO GLOBAL BOOKS', 700, 560);
+        context.textAlign = 'start';
+      } else if (type === 'short') {
+        drawMonogram(context, 150, 320, 180, false);
+        context.fillStyle = '#1F7A5C';
+        context.font = '700 70px Cinzel';
+        context.fillText('ALGORISM PRESS', 390, 410);
+        context.fillStyle = '#5170FF';
+        context.font = '600 22px "JetBrains Mono"';
+        context.fillText('CODE TO PRINT', 395, 460);
+      } else if (type === 'blue-avatar') {
+        context.fillStyle = '#5170FF';
+        context.fillRect(500, 215, 400, 400);
+        context.fillStyle = '#FFFFFF';
+        context.font = '800 150px Cinzel';
+        context.fillText('AP', 610, 475);
+      } else if (type === 'ink-avatar') {
+        context.fillStyle = '#173F3F';
+        context.fillRect(500, 215, 400, 400);
+        context.fillStyle = '#FFFFFF';
+        context.font = '800 150px Cinzel';
+        context.fillText('AP', 610, 475);
+      } else if (type === 'compact') {
+        drawMonogram(context, 535, 250, 330, false);
+        context.fillStyle = '#4D6868';
+        context.font = '600 24px "JetBrains Mono"';
+        context.fillText('COMPACT AP MARK', 570, 650);
+      } else if (type === 'outline') {
+        drawMonogram(context, 535, 250, 330, true);
+        context.fillStyle = '#4D6868';
+        context.font = '600 24px "JetBrains Mono"';
+        context.fillText('OUTLINE AP MARK', 570, 650);
+      }
+      context.fillStyle = '#4D6868';
+      context.font = '22px "JetBrains Mono"';
+      context.fillText(type.toUpperCase(), 90, 820);
+      const link = document.createElement('a');
+      link.download = `algorism-press-${type}-logo.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+    function switchLanguage(lang) {
+      document.querySelectorAll('.language button').forEach(button => button.classList.remove('active'));
+      const activeButton = document.querySelector(`.language button[onclick*="${lang}"]`);
+      if (activeButton) activeButton.classList.add('active');
+      document.querySelectorAll('[data-en]').forEach(element => {
+        const text = element.getAttribute(`data-${lang}`);
+        if (text) element.textContent = text;
+      });
+      document.documentElement.lang = lang;
+      document.title = lang === 'bn' ? 'অ্যালগোরিজম প্রেস: ব্র্যান্ড নির্দেশিকা' : 'Algorism Press: The Brand';
+    }
+  </script>
+</body>
+</html>

@@ -21,6 +21,15 @@ The portal is currently in development. Publication information will be added wh
 
 This repository contains the public web portal only. It intentionally does not include private business strategy, internal production methods, financial models, credentials, or unpublished operational details.
 
+## Repository Context
+
+The public portal is maintained across more than one repository:
+
+- **Personal repository:** [github.com/gmrafi/AlgorismPress](https://github.com/gmrafi/AlgorismPress)
+- **GitHub Pages repository:** [github.com/AlgorismPress/AlgorismPress.github.io](https://github.com/AlgorismPress/AlgorismPress.github.io)
+
+Both repositories may contain the same public portal files while serving different hosting or development contexts. Only confirmed public information belongs in either repository.
+
 ## Run Locally
 
 The portal is a static HTML page. Open `index.html` directly in a browser, or serve this directory with any simple static web server.
@@ -33,7 +42,8 @@ The portal is a static HTML page. Open `index.html` directly in a browser, or se
 
 ## Links
 
-- Project repository: [github.com/AlgorismPress](https://github.com/AlgorismPress)
+- Personal repository: [github.com/gmrafi/AlgorismPress](https://github.com/gmrafi/AlgorismPress)
+- Public web portal: [github.com/AlgorismPress/AlgorismPress.github.io](https://github.com/AlgorismPress/AlgorismPress.github.io)
 
 ## Status of This README
 
